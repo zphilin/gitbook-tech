@@ -177,7 +177,7 @@ docker commit -m 'hadoop installed' container_id ubuntu:hadoop
 
 ```
 #在三个不同的终端标签页中分别执行以下命令
-docker run -it -h master ubuntu:hadoop
+docker run -it -h master -p 50070:50070 ubuntu:hadoop
 docker run -it -h slave1 ubuntu:hadoop
 docker run -it -h slave2 ubuntu:hadoop
 ```
@@ -206,13 +206,37 @@ slave2
 ```bash
 #在master节点执行start-all.sh 若能看到以下类似信息表示成功
 slave1: starting nodemanager, logging to /root/soft/hadoop/hadoop-2.6.5/logs/yarn-root-nodemanager-slave1.out
-#在各节点中执行jps命令查看服务进程
-jps #master中信息
-1762 NodeManager
-3592 Jps
-974 NameNode
-1563 SecondaryNameNode
-336 ResourceManager
-1418 DataNode
 ```
+
+#### 查看服务状态
+
+> \#在各节点中执行jps命令查看服务进程
+> 
+> jps \#master中信息
+> 
+> 1762 NodeManager
+> 
+> 3592 Jps
+> 
+> 974 NameNode
+> 
+> 1563 SecondaryNameNode
+> 
+> 336 ResourceManager
+> 
+> 1418 DataNode
+
+对于非Toolbox的Docker环境可直接在浏览器中访问master节点 [http:\/\/172.17.0.4:50070](http://172.17.0.4:50070)
+
+如果是采用Toolbox安装的Docker，则访问[http:\/\/192.168.99.100:50070 ](http://192.168.99.100:50070)
+
+此中情况需要做端口映射，见开始docker run处，如果没有可在宿主机执行，达到动态修改端口～
+
+iptables -t nat -A PREROUTING -p tcp -m tcp --dport 50070 -j DNAT --to-destination 172.17.0.4:50070
+
+![](/assets/屏幕快照 2016-11-19 下午10.21.04.png)
+
+
+
+
 
