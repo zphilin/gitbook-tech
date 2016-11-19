@@ -133,21 +133,21 @@ mkdir datanode
 
 > &lt;configuration&gt;
 > 
->  &lt;property&gt;
+> &lt;property&gt;
 > 
->  &lt;name&gt;mapred.job.tracker&lt;\/name&gt;
+> &lt;name&gt;mapred.job.tracker&lt;\/name&gt;
 > 
->  &lt;value&gt;master:9001&lt;\/value&gt;
+> &lt;value&gt;master:9001&lt;\/value&gt;
 > 
->  &lt;description&gt;The host and port that the MapReduce job tracker runs
+> &lt;description&gt;The host and port that the MapReduce job tracker runs
 > 
->  at. If "local", then jobs are run in-process as a single map
+> at. If "local", then jobs are run in-process as a single map
 > 
->  and reduce task.
+> and reduce task.
 > 
->  &lt;\/description&gt;
+> &lt;\/description&gt;
 > 
->  &lt;\/property&gt;
+> &lt;\/property&gt;
 > 
 > &lt;\/configuration&gt;
 
@@ -203,19 +203,16 @@ slave2
 
 #### 启动服务
 
+```bash
+#在master节点执行start-all.sh 若能看到以下类似信息表示成功
+slave1: starting nodemanager, logging to /root/soft/hadoop/hadoop-2.6.5/logs/yarn-root-nodemanager-slave1.out
+#在各节点中执行jps命令查看服务进程
+jps #master中信息
+1762 NodeManager
+3592 Jps
+974 NameNode
+1563 SecondaryNameNode
+336 ResourceManager
+1418 DataNode
 ```
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
 
