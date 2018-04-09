@@ -1,2 +1,2 @@
 # TechNote
-a learning note
+a learning note...
