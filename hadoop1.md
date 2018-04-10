@@ -237,6 +237,6 @@ iptables -t nat -A PREROUTING -p tcp -m tcp --dport 50070 -j DNAT --to-destinati
 ![](/assets/屏幕快照 2016-11-19 下午10.21.04.png)
 
 
-
+*ifreer@2016.11.19*
 
 
